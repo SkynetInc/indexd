@@ -21,8 +21,8 @@ function Indexd (db, rpc) {
   this.emitter = new EventEmitter() // TODO: bind to this
   this.emitter.setMaxListeners(Infinity)
   this.indexes = {
-    fee: new FeeIndex(),
-    mtp: new MtpIndex(),
+    // fee: new FeeIndex(),
+    // mtp: new MtpIndex(),
     script: new ScriptIndex(),
     tx: new TxIndex(),
     txin: new TxinIndex(),
