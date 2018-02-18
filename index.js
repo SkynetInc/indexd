@@ -23,7 +23,7 @@ function Indexd (db, rpc) {
   this.indexes = {
     // fee: new FeeIndex(),
     // mtp: new MtpIndex(),
-    script: new ScriptIndex(),
+    // script: new ScriptIndex(),
     tx: new TxIndex(),
     txin: new TxinIndex(),
     txo: new TxoIndex()
