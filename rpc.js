@@ -33,7 +33,11 @@ function augment (tx) {
 }
 
 function block (rpc, blockId, done) {
-  rpcd(rpc, 'getblock', [blockId, 2], (err, block) => {
+  let verbose;
+  if(process.env.COIN === 'btc') verbose = 2;
+  if(process.env.COIN === 'bch') verbose = true;
+
+  rpcd(rpc, 'getblock', [blockId, verbose], (err, block) => {
     if (err) return done(err)
 
     block.blockId = blockId
