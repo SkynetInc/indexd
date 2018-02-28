@@ -103,7 +103,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
     atomic.put(FEE, { height }, {
       iqr: box(feeRates),
-      size: block.strippedsize
+      size: block.strippedsize || 0
     })
     atomic.put(FEETIP, {}, block)
 
