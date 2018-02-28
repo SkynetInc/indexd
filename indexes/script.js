@@ -134,7 +134,7 @@ ScriptIndex.prototype.txosBy = function (db, { scId, heightRange, mempool }, max
       txId, vout, height, value
     })
 
-    if (results.length > maxRows) return __iterator.end((err) => callback(err || new RangeError('Exceeded Limit')))
+    // if (results.length > maxRows) return __iterator.end((err) => callback(err || new RangeError('Exceeded Limit')))
   }, (err) => callback(err, results))
 }
 
