@@ -39,7 +39,7 @@ function put (type, key, value, callback) {
   typeforce(type.valueType, value)
 
   key = type.key.encode(key)
-  value = type.value ? type.value.encode(value) : null
+  value = type.value ? type.value.encode(value) : NIL
 //    debug('put', key.length, value.length)
 
   return this.put(key, value, callback)
