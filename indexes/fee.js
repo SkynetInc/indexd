@@ -94,7 +94,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
         debug(`INDEX FEE ${fee} @ ${size}`)
 
-        let feeRate = Math.floor(fee / vsize)
+        let feeRate = Math.floor(fee / size)
 
 
 
