@@ -88,17 +88,21 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
     txTasks.push((next) => {
       if (coinbase) return next(null, 0)
+      if (!vsize) return next(null, 0)
 
       parallel(txoTasks, (err) => {
         if (err) return next(err)
+
         debug(`INDEX FEE inAccum ${inAccum}`)
         debug(`INDEX FEE outAccum ${outAccum}`)
+
         let fee = inAccum - outAccum
 
         // TODO hack
         debug(`INDEX FEE ${fee} @ ${vsize}`)
         if(!vsize) vsize = 0;
         debug(`INDEX FEE ${fee} @ ${vsize}`)
+
         let feeRate = Math.floor(fee / vsize)
 
 
