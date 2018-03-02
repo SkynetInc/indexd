@@ -55,7 +55,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
   let txTasks = []
   transactions.forEach((tx) => {
-    debug(`TRANSACTON ${tx}`)
+    // debug(`TRANSACTON ${tx}`)
     let { ins, outs, vsize } = tx
     let inAccum = 0
     let outAccum = 0
@@ -110,7 +110,8 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
     if (err) return callback(err)
     feeRates = feeRates.sort((a, b) => a - b)
 
-    // debug(`INDEX FEE RATES ${feeRates}`)
+    debug(`INDEX FEE RATES ${feeRates}`)
+    if(!feeRates) feeRates = 0;
 
     atomic.put(FEE, { height }, {
       iqr: box(feeRates),
