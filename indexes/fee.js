@@ -116,12 +116,13 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
     if (err) return callback(err)
     feeRates = feeRates.sort((a, b) => a - b)
 
-    debug(`INDEX FEE RATES ${feeRates}`)
+    debug(`INDEX FEE_RATES txTasks ${feeRates}`)
     if(!feeRates) feeRates = 0;
 
+    debug(`INDEX HEIGHT ${height}`)
     atomic.put(FEE, { height }, {
       iqr: box(feeRates),
-      size: block.strippedsize
+      size: block.strippedsize || block.size
     })
     atomic.put(FEETIP, {}, block)
 
