@@ -55,7 +55,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
   let txTasks = []
   transactions.forEach((tx) => {
-    debug(`TRANSACTON ${tx}`)
+    debug(`TRANSACTON ${tx.toString()}`)
     let { ins, outs, vsize } = tx
     let inAccum = 0
     let outAccum = 0
