@@ -91,6 +91,8 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
       parallel(txoTasks, (err) => {
         if (err) return next(err)
+        debug(`INDEX FEE inAccum ${inAccum}`)
+        debug(`INDEX FEE outAccum ${outAccum}`)
         let fee = inAccum - outAccum
 
         // TODO hack
