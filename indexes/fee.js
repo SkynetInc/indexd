@@ -55,7 +55,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
   let txTasks = []
   transactions.forEach((tx) => {
-    let { ins, outs, vsize } = tx
+    let { ins, outs, size } = tx
     let inAccum = 0
     let outAccum = 0
     let txoTasks = []
@@ -92,7 +92,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
         if (err) return next(err)
         let fee = inAccum - outAccum
 
-        debug(`INDEX FEE ${fee} @ ${vsize}`)
+        debug(`INDEX FEE ${fee} @ ${size}`)
 
         let feeRate = Math.floor(fee / vsize)
 
