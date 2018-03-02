@@ -1,4 +1,4 @@
-let debug = require('./debug')('FEE')
+let debug = require('../debug')('FEE')
 let parallel = require('run-parallel')
 let typeforce = require('typeforce')
 let types = require('./types')
@@ -106,7 +106,7 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
   parallel(txTasks, (err, feeRates) => {
     if (err) return callback(err)
     feeRates = feeRates.sort((a, b) => a - b)
-    
+
     debug(`INDEX FEE RATES ${feeRates}`)
 
     atomic.put(FEE, { height }, {
