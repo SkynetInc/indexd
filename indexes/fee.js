@@ -55,7 +55,6 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
   let txTasks = []
   transactions.forEach((tx) => {
-    // debug(`TRANSACTON ${tx}`)
     let { ins, outs, vsize } = tx
     let inAccum = 0
     let outAccum = 0
@@ -92,20 +91,13 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
 
       parallel(txoTasks, (err) => {
         if (err) return next(err)
-
-        debug(`INDEX FEE inAccum ${inAccum}`)
-        debug(`INDEX FEE outAccum ${outAccum}`)
-
         let fee = inAccum - outAccum
 
         // TODO hack
-        debug(`INDEX FEE ${fee} @ ${vsize}`)
+        // debug(`INDEX FEE ${fee} @ ${vsize}`)
         if(!vsize) vsize = 0;
-        debug(`INDEX FEE ${fee} @ ${vsize}`)
 
         let feeRate = Math.floor(fee / vsize)
-
-
 
         next(null, feeRate)
       })
@@ -116,10 +108,10 @@ FeeIndex.prototype.connect2ndOrder = function (db, txoIndex, atomic, block, call
     if (err) return callback(err)
     feeRates = feeRates.sort((a, b) => a - b)
 
-    debug(`INDEX FEE_RATES txTasks ${feeRates}`)
-    if(!feeRates) feeRates = 0;
+    //TODO hack
+    // debug(`INDEX FEE_RATES txTasks ${feeRates}`)
+    // if(!feeRates) feeRates = 0;
 
-    debug(`INDEX HEIGHT ${height}`)
     atomic.put(FEE, { height }, {
       iqr: box(feeRates),
       size: block.strippedsize || block.size
