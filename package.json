@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "newrelic": "^2.9.0",
     "run-parallel": "^1.1.6",
     "typeforce": "^1.10.6",
     "varstruct": "^6.1.1",
