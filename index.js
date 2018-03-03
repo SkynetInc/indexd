@@ -1,4 +1,3 @@
-require('newrelic');
 let debug = require('./debug')('indexd')
 let dbwrapper = require('./dbwrapper')
 let { EventEmitter } = require('events')
